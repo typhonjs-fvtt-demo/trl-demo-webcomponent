@@ -7,7 +7,6 @@
 <svelte:options accessors={true}/>
 
 <ApplicationShell bind:elementRoot>
-   Hello Test!
-   <br>
-   <wc-doc-stat-block/>
+<!--   <wc-doc-stat-block uuid="Actor.TVRkiUOF8iTUFDsV" />-->
+   <wc-doc-stat-block />
 </ApplicationShell>
