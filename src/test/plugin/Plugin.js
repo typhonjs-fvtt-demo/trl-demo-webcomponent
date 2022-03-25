@@ -2,11 +2,16 @@ import Buttons from './ui/Buttons.js';
 
 export class PluginWC
 {
+   /**
+    * @param {import('tinymce').Editor}  editor -
+    */
    constructor(editor)
    {
-      editor.addCommand('typhonjsWC', () => editor.insertContent('<wc-doc-stat-block>*</wc-doc-stat-block>'));
+      editor.addCommand('typhonjsWC', () => editor.insertContent('<wc-doc-stat-block uuid="Actor.TVRkiUOF8iTUFDsV">&nbsp;</wc-doc-stat-block>'));
 
       Buttons.register(editor);
+
+      editor.settings.extended_valid_elements = 'wc-doc-stat-block[*]';
 
       // Add custom element to settings
       if (typeof editor.settings.custom_elements === 'string')
@@ -15,17 +20,17 @@ export class PluginWC
          {
             if (editor.settings.custom_elements.length === 0)
             {
-               editor.settings.custom_elements = '~wc-doc-stat-block';
+               editor.settings.custom_elements = 'wc-doc-stat-block';
             }
             else
             {
-               editor.settings.custom_elements += ', ~wc-doc-stat-block';
+               editor.settings.custom_elements += ', wc-doc-stat-block';
             }
          }
       }
       else
       {
-         editor.settings.custom_elements = '~wc-doc-stat-block';
+         editor.settings.custom_elements = 'wc-doc-stat-block';
       }
 
       editor.on('init', () =>
@@ -42,18 +47,38 @@ export class PluginWC
          win.game = globalThis.game;
          win.ui = globalThis.ui;
          win.Hooks = globalThis.Hooks;
+         win.fromUuid = globalThis.fromUuid;
+
+win.addEventListener('drop', (event) => console.log(`!!!! TMCE drop: `, event.dataTransfer.getData('text/plain')));
+win.addEventListener('dragenter', (event) => console.log(`!!!! TMCE dragenter: `, event.dataTransfer.getData('text/plain')));
+
+win.parent.document.addEventListener('dragstart', (event) => console.log(`!!!! TMCE - parent - dragstart: `, event.dataTransfer.getData('text/plain')));
+         win.parent.document.addEventListener('dragend', (event) => console.log(`!!!! TMCE - parent - dragend - x: ${event.clientX}; y: ${event.clientY}`));
 
          // Add web components to TinyMCE iFrame.
          const script = doc.createElement('script');
          script.type = 'module';
          script.src = '/modules/typhonjs-webcomponent/dist/typhonjs-webcomponent.js';
-         doc.head.appendChild(script);
+         doc.head.append(script);
       });
 
       // The preinit event is fired after the editor is loaded but before
       // the content is loaded
       // https://www.tiny.cloud/docs/advanced/events/#editorcoreevents
       editor.on('preinit', () => {
+         editor.parser.addNodeFilter('wc-doc-stat-block', (nodes, name) =>
+         {
+            console.log(`! PLUGIN - PARSER - ADD NODE FILTER`);
+            for (const node of nodes)
+            {
+               // node.active = 'true';
+               node.attr('active', 'true');
+               node.attr('contenteditable', 'false')
+               console.log(`! PLUGIN - PARSER - ADD NODE FILTER - node: `, node);
+            }
+         });
+
+
          // During the creation of the web component we set contenteditable false
          // on the web component to make it behave like a noneditable but selectable
          // element inside TinyMCE. But we don't want the contenteditable attribute
@@ -65,11 +90,11 @@ export class PluginWC
             // console.log(`!!! ADD NODE FILTER`);
 
             // Iterate through all filtered nodes and remove the contenteditable attribute
-            // nodes.forEach((node) => {
-            //    if (!!node.attr('contenteditable')) {
-            //       node.attr('contenteditable', null);
-            //    }
-            // });
+            for (const node of nodes)
+            {
+               if (!!node.attr('active')) { node.attr('contenteditable', null); }
+               if (!!node.attr('contenteditable')) { node.attr('contenteditable', null); }
+            }
          });
       });
    }
