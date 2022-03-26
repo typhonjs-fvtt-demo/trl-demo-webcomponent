@@ -69,10 +69,10 @@ export default () =>
          ]
       },
 
-      {  // The test module bundle
-         input: `src/test/init.js`,
+      {  // The config / test / TinyMCE plugin module bundle
+         input: `src/config/init.js`,
          output: {
-            file: `dist/typhonjs-webcomponent-test.js`,
+            file: `dist/typhonjs-webcomponent-config.js`,
             format: 'es',
             plugins: outputPlugins,
             sourcemap

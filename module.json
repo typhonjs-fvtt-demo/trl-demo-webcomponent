@@ -17,8 +17,8 @@
   "minimumCoreVersion": "0.8.6",
   "compatibleCoreVersion": "9",
   "esmodules": [
-    "./dist/typhonjs-webcomponent-test.js",
-    "./dist/typhonjs-webcomponent.js"
+    "./dist/typhonjs-webcomponent.js",
+    "./dist/typhonjs-webcomponent-config.js"
   ],
   "styles": [
     "./dist/typhonjs-webcomponent-test.css"
