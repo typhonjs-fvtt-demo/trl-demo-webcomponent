@@ -58,7 +58,7 @@
       align-items: center;
       border-radius: 10px;
       border: 2px solid rgba(0, 0, 0, 0.2);
-      padding: 0.5em;
+      padding: 0.25em;
       margin-top: auto;
    }
 
