@@ -18,12 +18,12 @@ export default class WCTestApplication extends SvelteApplication
    static get defaultOptions()
    {
       return foundry.utils.mergeObject(super.defaultOptions, {
-         id: 'typhonjs-webcomponent-config',
+         id: 'trl-webcomponent-config',
          resizable: true,
          minimizable: true,
          width: 400,
          height: 'auto',
-         title: 'TyphonJS Web Components',
+         title: 'TRL Web Component Demo',
 
          svelte: {
             class: WCTestAppShell,

@@ -1,10 +1,10 @@
 import SettingsShim  from './SettingShim.js';
 import openTestApp   from './openTestApp.js';
 
-import Plugin        from './plugin/Plugin.js';
+import PluginWC      from './plugin/Plugin.js';
 
 // Initialize TinyMCE WC plugin.
-Plugin();
+PluginWC();
 
 Hooks.on('init', () => game.settings.registerMenu('typhonjs-webcomponent', 'config', {
    name: 'Click to open:',
@@ -14,4 +14,4 @@ Hooks.on('init', () => game.settings.registerMenu('typhonjs-webcomponent', 'conf
    restricted: false
 }));
 
-Hooks.on('TyphonJS.WCTest.Open', openTestApp);
+Hooks.on('TRL.Demo.WCTest.Open', openTestApp);

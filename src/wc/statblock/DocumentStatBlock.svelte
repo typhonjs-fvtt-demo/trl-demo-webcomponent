@@ -1,3 +1,4 @@
+<!-- Svelte option to indicate this component is a web component -->
 <svelte:options tag="wc-doc-stat-block" />
 
 <script>
@@ -12,12 +13,12 @@
    // Store the component reference to access the shadow root / host element.
    const component = get_current_component();
 
+   // Defines the external attributes that are available for this web component.
    export let active = 'false';
    export let uuid = void 0;
 
+   // Create a document wrapper that is updated with changes to the `uuid` attribute.
    const doc = new TJSDocument();
-
-   let statBlock;
 
    // Wait for result of setting document from UUID and if the lookup resolves successfully then set the `uuid`
    // attribute on the shadow root host element. This allows `uuid` to be serialized by TinyMCE.
@@ -26,8 +27,11 @@
       if (success) { component.shadowRoot.host.setAttribute('uuid', uuid); }
    });
 
-   $: statBlock = $doc ? getStatBlock($doc) : EmptyStatBlock;
-
+   /**
+    * Handles parsing the drop event and sets the new `uuid` or undefined.
+    *
+    * @param {DragEvent}   event -
+    */
    function onDrop(event)
    {
       // `active` tag must be `true` to handle drop events. The TinyMCE plugin sets this attribute when in edit mode.
@@ -43,15 +47,18 @@
 
 <div class=container
      on:drop|preventDefault|stopPropagation={onDrop}
-     on:dragover|preventDefault={()=>null}>
+     on:dragover|preventDefault={()=>null}> <!-- Necessary for drop handling in iframes -->
 
-   <svelte:component this={statBlock} doc={$doc}/>
+   <!-- When the document changes retrieve the new child component to render document contents. -->
+   <svelte:component this={$doc ? getStatBlock($doc) : EmptyStatBlock} doc={$doc}/>
 
    <!-- Hack to get the CSS used in child components to take -->
    <span class="content img" style="display:none"></span>
 </div>
 
 <style>
+   /* Provides the styles for this component and child components. */
+
    div.container {
       background: rgba(0, 0, 0, 0.2);
       display: flex;
