@@ -1,4 +1,4 @@
-<svelte:options tag="internal-basicstatblock" />
+<svelte:options tag="wc-doc-stat-block-basicstatblock" />
 
 <script>
    export let doc;

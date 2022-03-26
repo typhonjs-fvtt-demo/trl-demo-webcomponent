@@ -1,4 +1,4 @@
-<svelte:options tag="internal-actor5estatblock" />
+<svelte:options tag="wc-doc-stat-block-actor5estatblock" />
 
 <script>
    export let doc;

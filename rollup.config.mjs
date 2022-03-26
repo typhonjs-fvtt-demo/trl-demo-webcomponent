@@ -52,16 +52,7 @@ export default () =>
                compilerOptions: {
                   customElement: true
                },
-               preprocess: preprocess(),
-               onwarn: (warning, handler) =>
-               {
-                  // Suppress `a11y-missing-attribute` for missing href in <a> links.
-                  // Foundry doesn't follow accessibility rules.
-                  if (warning.message.includes(`<a> element should have an href attribute`)) { return; }
-
-                  // Let Rollup handle all other warnings normally.
-                  handler(warning);
-               },
+               preprocess: preprocess()
             }),
 
             resolve(s_RESOLVE_CONFIG),
