@@ -20,8 +20,8 @@
    // Create a document wrapper that is updated with changes to the `uuid` attribute.
    const doc = new TJSDocument();
 
-   // Wait for result of setting document from UUID and if the lookup resolves successfully then set the `uuid`
-   // attribute on the shadow root host element. This allows `uuid` to be serialized by TinyMCE.
+   // Reactive statement that waits for result of setting document from UUID and if the lookup resolves successfully
+   // then set the `uuid` attribute on the shadow root host element. This allows `uuid` to be serialized by TinyMCE.
    $: doc.setFromUUID(uuid).then((success) =>
    {
       if (success) { component.shadowRoot.host.setAttribute('uuid', uuid); }
@@ -35,6 +35,7 @@
    function onDrop(event)
    {
       // `active` tag must be `true` to handle drop events. The TinyMCE plugin sets this attribute when in edit mode.
+      // It may also be manually set in tag markup or by `setAttribute` on the element.
       if (active !== 'true') { return; }
 
       try
