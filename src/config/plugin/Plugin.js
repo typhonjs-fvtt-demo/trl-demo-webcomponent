@@ -3,7 +3,7 @@ import { appendConfigString } from './appendConfigString.js';
 // An object containing the available tags as keys w/ text description as value.
 const s_TAGS = {
    'wc-doc-stat-block': 'Document Stat Block'
-}
+};
 
 export class PluginWC
 {
@@ -17,14 +17,16 @@ export class PluginWC
       editor.ui.registry.addMenuButton('typhonjs-wc', {
          icon: 'embed-page',
          tooltip: 'Insert Web Component',
-         fetch: (callback) => {
+         fetch: (callback) =>
+         {
             // Add menu items to insert web component tag at the location of the cursor.
-            const items = Object.keys(s_TAGS).map((tag) => {
+            const items = Object.keys(s_TAGS).map((tag) =>
+            {
                return {
                   type: 'menuitem',
                   text: s_TAGS[tag],
                   onAction: () => editor.insertContent(`<${tag}>&nbsp;</${tag}>`)
-               }
+               };
             });
             callback(items);
          }
@@ -58,14 +60,15 @@ export class PluginWC
          // Add web components to TinyMCE iFrame.
          const script = doc.createElement('script');
          script.type = 'module';
-         script.src = '/modules/typhonjs-webcomponent/dist/typhonjs-webcomponent.js';
+         script.src = '/modules/trl-demo-webcomponent/dist/trl-webcomponent.js';
          doc.head.append(script);
       });
 
       // The preinit event is fired after the editor is loaded but before the content is loaded.
       // Add node filters to add / remove the `active` and `contenteditable` attributes.
       // https://www.tiny.cloud/docs/advanced/events/#editorcoreevents
-      editor.on('preinit', () => {
+      editor.on('preinit', () =>
+      {
          const tags = Object.keys(s_TAGS).join(',');
 
          // During the creation of the web component we set the contenteditable attribute to false making it behave
@@ -75,18 +78,19 @@ export class PluginWC
             for (const node of nodes)
             {
                node.attr('active', 'true');
-               node.attr('contenteditable', 'false')
+               node.attr('contenteditable', 'false');
             }
          });
 
          // On serialization remove `active` and `contenteditable` attributes.
          // Serialization occurs on "save", view sourcecode and preview, etc.
          // https://www.tiny.cloud/docs/api/tinymce.dom/tinymce.dom.serializer/#addnodefilter
-         editor.serializer.addNodeFilter(tags, (nodes) => {
+         editor.serializer.addNodeFilter(tags, (nodes) =>
+         {
             for (const node of nodes)
             {
-               if (!!node.attr('active')) { node.attr('active', null); }
-               if (!!node.attr('contenteditable')) { node.attr('contenteditable', null); }
+               node.attr('active', null);
+               node.attr('contenteditable', null);
             }
          });
       });
@@ -101,7 +105,4 @@ export class PluginWC
    }
 }
 
-export default () =>
-{
-   tinymce.PluginManager.add('typhonjs-wc', PluginWC);
-};
+export default () => tinymce.PluginManager.add('typhonjs-wc', PluginWC);
