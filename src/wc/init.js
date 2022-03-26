@@ -1,1 +1,1 @@
-import './DocumentStatBlock.svelte';
+import './statblock/DocumentStatBlock.svelte';

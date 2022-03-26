@@ -64,8 +64,6 @@ export default () =>
                },
             }),
 
-            // postcss(postcssMain),
-
             resolve(s_RESOLVE_CONFIG),
 
             // When s_TYPHONJS_MODULE_LIB is true transpile against the Foundry module version of TRL.

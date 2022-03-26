@@ -1,5 +1,3 @@
-import Buttons from './ui/Buttons.js';
-
 export class PluginWC
 {
    /**
@@ -9,7 +7,12 @@ export class PluginWC
    {
       editor.addCommand('typhonjsWC', () => editor.insertContent('<wc-doc-stat-block>&nbsp;</wc-doc-stat-block>'));
 
-      Buttons.register(editor);
+      // Register button.
+      editor.ui.registry.addToggleButton('typhonjs-wc', {
+         tooltip: 'Insert stat block',
+         icon: 'embed-page',
+         onAction: () => editor.execCommand('typhonjsWC')
+      });
 
       editor.settings.extended_valid_elements = 'wc-doc-stat-block[*]';
 
@@ -48,12 +51,6 @@ export class PluginWC
          win.ui = globalThis.ui;
          win.Hooks = globalThis.Hooks;
          win.fromUuid = globalThis.fromUuid;
-
-win.addEventListener('drop', (event) => console.log(`!!!! TMCE drop: `, event.dataTransfer.getData('text/plain')));
-win.addEventListener('dragenter', (event) => console.log(`!!!! TMCE dragenter: `, event.dataTransfer.getData('text/plain')));
-
-win.parent.document.addEventListener('dragstart', (event) => console.log(`!!!! TMCE - parent - dragstart: `, event.dataTransfer.getData('text/plain')));
-win.parent.document.addEventListener('dragend', (event) => console.log(`!!!! TMCE - parent - dragend - x: ${event.clientX}; y: ${event.clientY}`));
 
          // Add web components to TinyMCE iFrame.
          const script = doc.createElement('script');
