@@ -19,7 +19,7 @@ const s_TYPHONJS_MODULE_LIB = false;
 
 // Creates a standard configuration for PostCSS with autoprefixer & postcss-preset-env.
 const postcssMain = postcssConfig({
-   extract: 'typhonjs-webcomponent-config.css',
+   extract: 'trl-webcomponent-config.css',
    compress: s_COMPRESS,
    sourceMap: s_SOURCEMAPS
 });
@@ -42,7 +42,7 @@ export default () =>
       {  // The web component bundle
          input: `src/wc/init.js`,
          output: {
-            file: `dist/typhonjs-webcomponent.js`,
+            file: `dist/trl-webcomponent.js`,
             format: 'es',
             plugins: outputPlugins,
             sourcemap
@@ -72,7 +72,7 @@ export default () =>
       {  // The config / test / TinyMCE plugin module bundle
          input: `src/config/init.js`,
          output: {
-            file: `dist/typhonjs-webcomponent-config.js`,
+            file: `dist/trl-webcomponent-config.js`,
             format: 'es',
             plugins: outputPlugins,
             sourcemap

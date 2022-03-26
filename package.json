@@ -1,7 +1,7 @@
 {
-  "name": "typhonjs-webcomponent",
+  "name": "trl-demo-webcomponent",
   "description": "Provides several web components for Foundry VTT.",
-  "license": "MPL-2.0",
+  "license": "MIT",
   "type": "module",
   "author": "Michael Leahy <support@typhonjs.io> (https://github.com/typhonrt)",
   "contributors": [

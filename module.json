@@ -1,7 +1,7 @@
 {
-  "name": "typhonjs-webcomponent",
-  "title": "TyphonJS Web Component",
-  "description": "Provides several web components for Foundry VTT.",
+  "name": "trl-demo-webcomponent",
+  "title": "TRL Web Component Demo",
+  "description": "Provides an essential demo for creating web components with TRL.",
   "author": "Michael Leahy (TyphonJS) - MLeahy#4299",
   "authors": [
     {
@@ -9,19 +9,19 @@
       "url": "https://www.typhonjs.io"
     }
   ],
-  "url": "https://github.com/typhonjs-fvtt/typhonjs-webcomponent",
-  "readme": "https://github.com/typhonjs-fvtt/typhonjs-webcomponent/blob/master/README.md",
-  "bugs": "https://github.com/typhonjs-fvtt/typhonjs-webcomponent/issues",
-  "changelog": "https://github.com/typhonjs-fvtt/typhonjs-webcomponent/releases/latest/",
+  "url": "https://github.com/typhonjs-fvtt-demo/trl-demo-webcomponent",
+  "readme": "https://github.com/typhonjs-fvtt-demo/trl-demo-webcomponent/blob/master/README.md",
+  "bugs": "https://github.com/typhonjs-fvtt-demo/trl-demo-webcomponent/issues",
+  "changelog": "https://github.com/typhonjs-fvtt-demo/trl-demo-webcomponent/releases/latest/",
   "version": "0.0.0",
   "minimumCoreVersion": "0.8.6",
   "compatibleCoreVersion": "9",
   "esmodules": [
-    "./dist/typhonjs-webcomponent.js",
-    "./dist/typhonjs-webcomponent-config.js"
+    "./dist/trl-webcomponent.js",
+    "./dist/trl-webcomponent-config.js"
   ],
   "styles": [
-    "./dist/typhonjs-webcomponent-config.css"
+    "./dist/trl-webcomponent-config.css"
   ],
   "languages": [
     {
@@ -33,8 +33,8 @@
   "system": [],
   "dependencies": [],
   "socket": false,
-  "manifest": "https://github.com/typhonjs-fvtt/typhonjs-webcomponent/releases/latest/download/module.json",
-  "download": "https://github.com/typhonjs-fvtt/typhonjs-webcomponent/releases/download/0.0.0/module.zip",
+  "manifest": "https://github.com/typhonjs-fvtt-demo/trl-demo-webcomponent/releases/latest/download/module.json",
+  "download": "https://github.com/typhonjs-fvtt-demo/trl-demo-webcomponent/releases/download/0.0.0/module.zip",
   "protected": false,
   "coreTranslation": false,
   "library": true
