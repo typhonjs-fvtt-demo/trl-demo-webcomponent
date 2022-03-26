@@ -1,3 +1,5 @@
+import { appendConfigString } from './appendConfigString.js';
+
 export class PluginWC
 {
    /**
@@ -14,27 +16,10 @@ export class PluginWC
          onAction: () => editor.execCommand('typhonjsWC')
       });
 
-      editor.settings.extended_valid_elements = 'wc-doc-stat-block[*]';
+      editor.settings.extended_valid_elements = appendConfigString(editor.settings.extended_valid_elements,
+       'wc-doc-stat-block[*]');
 
-      // Add custom element to settings
-      if (typeof editor.settings.custom_elements === 'string')
-      {
-         if (!editor.settings.custom_elements.includes('wc-doc-stat-block'))
-         {
-            if (editor.settings.custom_elements.length === 0)
-            {
-               editor.settings.custom_elements = 'wc-doc-stat-block';
-            }
-            else
-            {
-               editor.settings.custom_elements += ', wc-doc-stat-block';
-            }
-         }
-      }
-      else
-      {
-         editor.settings.custom_elements = 'wc-doc-stat-block';
-      }
+      editor.settings.custom_elements = appendConfigString(editor.settings.custom_elements, 'wc-doc-stat-block');
 
       editor.on('init', () =>
       {
