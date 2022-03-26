@@ -11,7 +11,7 @@
    <span>Document Stat Block:</span>
    <wc-doc-stat-block active=true></wc-doc-stat-block>
    <div class=container>
-      <span>Usage: &lt;wc-doc-stat-block uuid="<code>string</code>" active="<code>string</code>"&gt;&lt;/wc-doc-stat-block&gt;</span>
+      <span>Usage: &lt;wc-doc-stat-block uuid="<code>string</code>" active="<code>string</code>" /&gt;</span>
       <span>uuid - A Foundry document UUID.</span>
       <span>active - Enables document drag & drop when 'true'.</span>
    </div>

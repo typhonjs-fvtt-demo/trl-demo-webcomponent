@@ -21,7 +21,7 @@ export default class WCTestApplication extends SvelteApplication
          id: 'typhonjs-webcomponent-config',
          resizable: true,
          minimizable: true,
-         width: 550,
+         width: 400,
          height: 'auto',
          title: 'TyphonJS Web Components',
 
