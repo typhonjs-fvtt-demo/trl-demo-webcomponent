@@ -19,7 +19,7 @@ const s_TYPHONJS_MODULE_LIB = false;
 
 // Creates a standard configuration for PostCSS with autoprefixer & postcss-preset-env.
 const postcssMain = postcssConfig({
-   extract: 'typhonjs-webcomponent-test.css',
+   extract: 'typhonjs-webcomponent-config.css',
    compress: s_COMPRESS,
    sourceMap: s_SOURCEMAPS
 });

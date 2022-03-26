@@ -21,7 +21,7 @@
     "./dist/typhonjs-webcomponent-config.js"
   ],
   "styles": [
-    "./dist/typhonjs-webcomponent-test.css"
+    "./dist/typhonjs-webcomponent-config.css"
   ],
   "languages": [
     {
