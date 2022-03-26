@@ -43,9 +43,6 @@
          divElem.addEventListener('drop', () => console.log('! dropped on DIV'))
          divElem.addEventListener('dragenter', () => console.log('! drag enter on DIV'))
          doc.body.appendChild(divElem);
-
-         // TODO: this doesn't appear to work.
-         wcElem.uuid = 'Actor.TVRkiUOF8iTUFDsV';
       }, 100);
    }
 
@@ -54,8 +51,7 @@
 <svelte:options accessors={true}/>
 
 <ApplicationShell bind:elementRoot>
-   <wc-doc-stat-block uuid="Actor.TVRkiUOF8iTUFDsV" />
-<!--   <wc-doc-stat-block />-->
+   <wc-doc-stat-block active="true"></wc-doc-stat-block>
    <hr>
    <iframe bind:this={iframe} title="test"></iframe>
 </ApplicationShell>

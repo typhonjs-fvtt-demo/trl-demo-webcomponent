@@ -1,27 +1,50 @@
 <svelte:options tag="wc-doc-stat-block" />
 
 <script>
+   import { get_current_component }    from 'svelte/internal';
    import { TJSDocument }              from '@typhonjs-fvtt/runtime/svelte/store';
    import { getUUIDFromDataTransfer }  from '@typhonjs-fvtt/runtime/svelte/util';
 
-   export let active = 'false';
-   export let uuid = void 0; // 'Actor.TVRkiUOF8iTUFDsV';
+   // Store the component reference to access the shadow root / host element.
+   const component = get_current_component();
 
-   const document = new TJSDocument();
+   export let active = 'false';
+   export let uuid = void 0;
+
+   const doc = new TJSDocument();
 
    $:
    {
       console.log(`!!!! DSB - uuid: ${uuid}`);
-      document.setFromUUID(uuid);
+
+      // Wait for result of setting document from UUID and if the lookup resolves successfully then set the `uuid`
+      // attribute on the shadow root host element. This allows `uuid` to be serialized by TinyMCE.
+      doc.setFromUUID(uuid).then((success) =>
+      {
+         if (success) { component.shadowRoot.host.setAttribute('uuid', uuid); }
+      });
    }
 
-   $:
-   {
-      console.log(`!!!! DSB - active: ${active}`);
-   }
+   // TODO - remove: testing
+   // $:
+   // {
+   //    console.log(`!!!! DSB - active: ${active}`);
+   //
+   //    if (active === 'true')
+   //    {
+   //       console.log(`!!!! DSB - active is true setting UUID`);
+   //
+   //       setTimeout(() =>
+   //       {
+   //          uuid = 'Actor.TVRkiUOF8iTUFDsV';
+   //       }, 3000);
+   //    }
+   // }
 
    function onDrop(event)
    {
+      // `active` tag must be set to `true` to handle drop events. The TinyMCE plugin sets this attribute when in
+      // edit mode.
       if (active !== 'true')
       {
          console.log(`! DSB - onDrop - !active - aborting drop`);
@@ -63,8 +86,8 @@
      on:dragenter={dragEnter}
      on:mouseup={mouseUp}
 >
-{#if $document}
-   <img src={$document.data.img} alt="doc"> name: {$document.data.name}
+{#if $doc}
+   <img src={$doc.data.img} alt="doc"> name: {$doc.data.name}
 {:else}
    Empty Document Stat Block
 {/if}

@@ -7,7 +7,7 @@ export class PluginWC
     */
    constructor(editor)
    {
-      editor.addCommand('typhonjsWC', () => editor.insertContent('<wc-doc-stat-block uuid="Actor.TVRkiUOF8iTUFDsV">&nbsp;</wc-doc-stat-block>'));
+      editor.addCommand('typhonjsWC', () => editor.insertContent('<wc-doc-stat-block>&nbsp;</wc-doc-stat-block>'));
 
       Buttons.register(editor);
 
@@ -53,7 +53,7 @@ win.addEventListener('drop', (event) => console.log(`!!!! TMCE drop: `, event.da
 win.addEventListener('dragenter', (event) => console.log(`!!!! TMCE dragenter: `, event.dataTransfer.getData('text/plain')));
 
 win.parent.document.addEventListener('dragstart', (event) => console.log(`!!!! TMCE - parent - dragstart: `, event.dataTransfer.getData('text/plain')));
-         win.parent.document.addEventListener('dragend', (event) => console.log(`!!!! TMCE - parent - dragend - x: ${event.clientX}; y: ${event.clientY}`));
+win.parent.document.addEventListener('dragend', (event) => console.log(`!!!! TMCE - parent - dragend - x: ${event.clientX}; y: ${event.clientY}`));
 
          // Add web components to TinyMCE iFrame.
          const script = doc.createElement('script');
@@ -66,15 +66,12 @@ win.parent.document.addEventListener('dragstart', (event) => console.log(`!!!! T
       // the content is loaded
       // https://www.tiny.cloud/docs/advanced/events/#editorcoreevents
       editor.on('preinit', () => {
-         editor.parser.addNodeFilter('wc-doc-stat-block', (nodes, name) =>
+         editor.parser.addNodeFilter('wc-doc-stat-block', (nodes) =>
          {
-            console.log(`! PLUGIN - PARSER - ADD NODE FILTER`);
             for (const node of nodes)
             {
-               // node.active = 'true';
                node.attr('active', 'true');
                node.attr('contenteditable', 'false')
-               console.log(`! PLUGIN - PARSER - ADD NODE FILTER - node: `, node);
             }
          });
 
@@ -83,16 +80,14 @@ win.parent.document.addEventListener('dragstart', (event) => console.log(`!!!! T
          // on the web component to make it behave like a noneditable but selectable
          // element inside TinyMCE. But we don't want the contenteditable attribute
          // to be saved with the content. We therefore need to filter out the attribute
-         // upon serlialization (which happens on "save", view sourcecode and preview
+         // upon serialization (which happens on "save", view sourcecode and preview
          // among others).
          // https://www.tiny.cloud/docs/api/tinymce.dom/tinymce.dom.serializer/#addnodefilter
          editor.serializer.addNodeFilter('wc-doc-stat-block', (nodes) => {
-            // console.log(`!!! ADD NODE FILTER`);
-
-            // Iterate through all filtered nodes and remove the contenteditable attribute
+            // Iterate through all filtered nodes and remove the active and contenteditable attributes.
             for (const node of nodes)
             {
-               if (!!node.attr('active')) { node.attr('contenteditable', null); }
+               if (!!node.attr('active')) { node.attr('active', null); }
                if (!!node.attr('contenteditable')) { node.attr('contenteditable', null); }
             }
          });
