@@ -23,6 +23,9 @@ on Foundry. The main WC shows an excellent example of using the reactive documen
 ## Snapshot:
 ![trl-demo-webcomponent](https://i.imgur.com/0u8eI9J.gif)
 
+## Video Demo:
+[![trl-webcomponent-video](https://i.ytimg.com/vi/HMOCgGZFi0A/hqdefault.jpg)](https://www.youtube.com/watch?v=HMOCgGZFi0A)
+
 ## About:
 Getting started with a new library or development methodology can be difficult. This demo module
 provides a web component made with Svelte and various aspects that are provided with the TyphonJS Runtime
