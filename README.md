@@ -66,11 +66,11 @@ There is a basic test application seen in the snapshot above that is accessible 
 or running a macro script with `Hooks.call('TRL.Demo.WCTest.Open');` 
 
 A TinyMCE plugin to load and control the WC is available in `./src/config/plugin/Plugin.js`. It is automatically 
-available when this module and can be dropped into an editor configuration object by using `typhonjs-wc` as the plugin 
-name. Please see the video for a demo that shows usage with the new quest log. Alas, Foundry VTT by default currently 
-sanitizes user content, so it is not possible to use web components in stock journal entries or the chat log. However, 
-in the quest log TinyMCE is more fully controlled, so a demo is possible of how this WC works when integrated with 
-TinyMCE.
+available when this module is loaded and can be dropped into a TinyMCE editor configuration object by using 
+`typhonjs-wc` as the plugin name. Please see the video for a demo that shows usage with the new quest log. Alas, 
+Foundry VTT by default currently sanitizes user content, so it is not possible to use web components in stock journal 
+entries or the chat log. However, in the quest log TinyMCE is more fully controlled, so a demo is possible of how this 
+WC works when integrated with TinyMCE.
 
 WC Usage: 
 ```
