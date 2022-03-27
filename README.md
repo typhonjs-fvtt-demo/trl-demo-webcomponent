@@ -7,7 +7,7 @@
 
 # IMPORTANT NOTE:
 This demo repo is a sample made available in advance that requires TRL `0.0.8` which hasn't been released yet. It 
-currently isn't advisable to try and install this demo repo. `0.0.8` should be out soon and this announcement will be 
+currently isn't advisable to try and install this demo repo as it requires a local developer setup. `0.0.8` should be out soon and this announcement will be 
 updated.  
 
 Provides a demo reactive web component made with [TyphonJS Runtime Library](https://github.com/typhonjs-fvtt-lib/typhonjs) 
