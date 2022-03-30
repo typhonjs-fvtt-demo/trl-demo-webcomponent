@@ -5,11 +5,6 @@
 [![Code Style](https://img.shields.io/badge/code%20style-allman-yellowgreen.svg?style=flat)](https://en.wikipedia.org/wiki/Indent_style#Allman_style)
 [![License](https://img.shields.io/badge/license-MIT-yellowgreen.svg?style=flat)](https://github.com/typhonjs-fvtt-demo/trl-demo-webcomponent/blob/main/LICENSE)
 
-# IMPORTANT NOTE:
-This demo repo is a sample made available in advance that requires TRL `0.0.8` which hasn't been released yet. It 
-currently isn't advisable to try and install this demo repo as it requires a local developer setup. `0.0.8` should be out soon and this announcement will be 
-updated.  
-
 Provides a demo reactive web component made with [TyphonJS Runtime Library](https://github.com/typhonjs-fvtt-lib/typhonjs) 
 & [Svelte](https://svelte.dev/) to show the viability of web components on [Foundry VTT](https://foundryvtt.com/).
 
@@ -51,6 +46,11 @@ Discord server to ask any questions.
 
 Note: The TinyMCE integration / plugin will not presently work in stock Foundry journal entries due to server side 
 sanitation of user content. 
+
+## Direct Foundry Install Link:
+You may also install this demo module directly with the following link by pasting it into `manifest URL` field in the
+`add-on modules / install module` screen:
+https://github.com/typhonjs-fvtt-demo/trl-demo-webcomponent/releases/latest/download/module.json
 
 ## What Is Happening Here?
 TRL / Svelte allows building reactive web components (WC) that can easily hook into Foundry document data.
